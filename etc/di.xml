@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+     <preference for="Psr\Log\LoggerInterface" type="Tajmahal86\Gcpconnector\Logger\Monolog" />
+     <type name="Tajmahal86\Gcpconnector\Logger\Monolog">
+         <arguments>
+             <argument name="name" xsi:type="string">main</argument>
+             <argument name="handlers"  xsi:type="array">
+                 <item name="system" xsi:type="object">Tajmahal86\Gcpconnector\Logger\Handler\System</item>
+                 <item name="debug" xsi:type="object">Tajmahal86\Gcpconnector\Logger\Handler\Debug</item>
+             </argument>
+         </arguments>
+     </type>
+</config>
