@@ -5,7 +5,7 @@
         "google/cloud": "^0.26.0"
     },
     "type": "magento2-module",
-    "version": "dev-master",
+    "version": "1.0.0",
     "license": [
         "OSL-3.0",
         "AFL-3.0"
