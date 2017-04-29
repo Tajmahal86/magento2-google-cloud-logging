@@ -1,0 +1,22 @@
+{
+    "name": "tajmahal86/magento2-google-cloud-logging",
+    "description": "A simple replacement loggin solution with stackdriver",
+    "require": {
+        "google/cloud": "^0.26.0"
+    },
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Tajmahal86\\Gcpconnector\\": ""
+        }
+    }
+}
+ 
