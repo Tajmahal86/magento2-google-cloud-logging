@@ -5,6 +5,8 @@ namespace Tajmahal86\Gcpconnector\Logger\Handler;
 use Monolog\Handler\AbstractProcessingHandler;
 use Google\Cloud\Logging\LoggingClient;
 use Monolog\Logger;
+use Magento\Framework\Config\File\ConfigFilePool;
+
 
 class Base extends AbstractProcessingHandler
 {
@@ -13,11 +15,20 @@ class Base extends AbstractProcessingHandler
 	protected $logger;
     protected $loggerType = Logger::DEBUG;
 	protected $options;
-	protected $googleProjectId = 'my-project';
 
-    public function __construct( $options=[], $logging=null )
+
+    public function __construct(  $options=[], $logging=null )
     {
-		$googleProjectId = $this->googleProjectId;
+		$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+		$reader = $objectManager->create('\Magento\Framework\App\DeploymentConfig\Reader');
+		$env = $reader->load(ConfigFilePool::APP_ENV);
+		
+		if (isset($env["gcplogging"]["projectId"]))
+			$googleProjectId = $env["gcplogging"]["projectId"];
+		else
+			$googleProjectId = $this->detectProjectId();
+		
+		
         if (is_null($logging)) {
             $logging = new LoggingClient([
                 'projectId' => $googleProjectId,
@@ -35,10 +46,13 @@ class Base extends AbstractProcessingHandler
             ],
             'timestamp' => date('Y-m-dTH:i:sZ'),
         ], $options);
-		
-		
     }
 	
+
+	public function detectProjectId () 
+	{
+			return 'project-id';
+	}
 
     public function write(array $record)
     {
