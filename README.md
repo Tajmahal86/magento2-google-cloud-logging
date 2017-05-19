@@ -28,5 +28,6 @@ Installing the Extension
 4. Enable The Module
 
 	php bin/magento module:enable Tajmahal86_Gcpconnector
-	bin/magento setup:upgrade
+        
+	php bin/magento setup:upgrade
 
