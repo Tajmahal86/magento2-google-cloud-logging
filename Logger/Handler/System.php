@@ -15,9 +15,9 @@ class System extends Base
     protected $options;
     protected $exceptionHandler;
 
-    public function __construct($options=[], $logging=null)
+    public function __construct($options = [], $logging = null)
     {
-        $this->exceptionHandler = new Exception;
+        $this->exceptionHandler = new Exception();
         parent::__construct($options, $logging);
     }
 

@@ -14,20 +14,18 @@ class Base extends AbstractProcessingHandler
     protected $loggerType = Logger::DEBUG;
     protected $options;
 
-
-    public function __construct($options=[], $logging=null)
+    public function __construct($options = [], $logging = null)
     {
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
         $reader = $objectManager->create('\Magento\Framework\App\DeploymentConfig\Reader');
         $env = $reader->load(ConfigFilePool::APP_ENV);
-        
-        if (isset($env["gcplogging"]["projectId"])) {
-            $googleProjectId = $env["gcplogging"]["projectId"];
+
+        if (isset($env['gcplogging']['projectId'])) {
+            $googleProjectId = $env['gcplogging']['projectId'];
         } else {
             $googleProjectId = $this->detectProjectId();
         }
-        
-        
+
         if (is_null($logging)) {
             $logging = new LoggingClient([
                 'projectId' => $googleProjectId,
@@ -46,7 +44,6 @@ class Base extends AbstractProcessingHandler
             'timestamp' => date('Y-m-dTH:i:sZ'),
         ], $options);
     }
-    
 
     public function detectProjectId()
     {
