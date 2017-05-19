@@ -12,13 +12,13 @@ class System extends Base
 {
     protected $logName = 'system.log';
     protected $loggerType = Logger::INFO;
-	protected $options;
+    protected $options;
     protected $exceptionHandler;
 
-    public function __construct( $options=[], $logging=null )
-	{
+    public function __construct($options=[], $logging=null)
+    {
         $this->exceptionHandler = new Exception;
-        parent::__construct( $options, $logging );
+        parent::__construct($options, $logging);
     }
 
     public function write(array $record)
