@@ -1,8 +1,8 @@
 # magento2-google-cloud-logging
 
 
-This is a simple logging handler to view Magento2 logs in the Google Cloud Console
-Authentication for google logging should work out of the box on Google Compute Engine if vm is created with deault permissions
+This is a simple logging handler to view Magento2 logs in the Google Cloud Console.
+Authentication for google logging should work out of the box on Google Compute Engine if vm is created with default permissions
 
 Installing the Extension
 --------------------------------------------------
